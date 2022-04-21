@@ -17,6 +17,20 @@ spring:
     platform: h2
     continue-on-error: true
 
+#kafka properties
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: br.com.letscode.eighteleven.samples.conta.jms.serializer.AccountSerializer
+      group-id: group_id
+
+auto:
+  create:
+    topics:
+      enable: true
+
   application:
     name: conta-exemplo-ms
   jpa:
@@ -73,3 +87,7 @@ exemplo:
   client:
     cpf:
       validator: http://localhost:9080/api/cpf/status/{cpf}
+
+kafka:
+  topic:
+    name: eighteleven.samples.topic
